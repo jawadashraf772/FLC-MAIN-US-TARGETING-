@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Star, Sparkles } from 'lucide-react';
+import { CheckCircle2, Star, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const LinkedinIcon = ({ size = 24, ...props }: { size?: number } & React.SVGProps<SVGSVGElement>) => (
   <svg
@@ -105,6 +105,79 @@ const Team = () => {
       expertise: 'Lead Gen Strategy'
     }
   ];
+
+  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [isTransitioning, setIsTransitioning] = React.useState(true);
+  const [isPaused, setIsPaused] = React.useState(false);
+  const [visibleCount, setVisibleCount] = React.useState(3);
+  const [slideCooldown, setSlideCooldown] = React.useState(false);
+
+  const originalLength = teamMembers.length;
+  // Duplicate first visible items to create seamless infinite scroll
+  const extendedMembers = [...teamMembers, ...teamMembers.slice(0, 4)];
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setVisibleCount(1);
+      } else if (window.innerWidth < 1024) {
+        setVisibleCount(2);
+      } else {
+        setVisibleCount(3);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  React.useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [currentIndex, isPaused, visibleCount, slideCooldown]);
+
+  const handleNext = () => {
+    if (slideCooldown) return;
+    setSlideCooldown(true);
+    setCurrentIndex((prev) => prev + 1);
+    setTimeout(() => {
+      setSlideCooldown(false);
+    }, 700);
+  };
+
+  const handlePrev = () => {
+    if (slideCooldown) return;
+    setSlideCooldown(true);
+    if (currentIndex === 0) {
+      setIsTransitioning(false);
+      setCurrentIndex(originalLength);
+      setTimeout(() => {
+        setIsTransitioning(true);
+        setCurrentIndex(originalLength - 1);
+        setTimeout(() => {
+          setSlideCooldown(false);
+        }, 700);
+      }, 30);
+    } else {
+      setCurrentIndex((prev) => prev - 1);
+      setTimeout(() => {
+        setSlideCooldown(false);
+      }, 700);
+    }
+  };
+
+  const handleTransitionEnd = () => {
+    if (currentIndex >= originalLength) {
+      setIsTransitioning(false);
+      setCurrentIndex(0);
+      setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+    }
+  };
 
   const containerVariants = {
     hidden: {},
@@ -293,148 +366,250 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Team Grid */}
-        <motion.div 
-          className="grid-3" 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          style={{ gap: '2.5rem', alignItems: 'stretch' }}
+        {/* Team Infinite Autoplay Carousel Viewport */}
+        <div 
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          style={{ 
+            overflow: 'hidden', 
+            width: '100%', 
+            margin: '0 -1.25rem', 
+            padding: '1.5rem 1.25rem' 
+          }}
         >
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.name}
-              variants={cardHoverVariants}
-              initial="initial"
-              whileHover="cardHovered"
-              className="team-card"
-              style={{
-                background: '#ffffff',
-                border: '1.5px solid var(--border)',
-                borderRadius: '32px',
-                padding: '1.5rem',
-                display: 'flex',
-                flexDirection: 'column',
-                cursor: 'default',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
-              {/* Image Frame */}
-              <div style={{
-                position: 'relative',
-                width: '100%',
-                height: '320px',
-                borderRadius: '20px',
-                overflow: 'hidden',
-                marginBottom: '1.5rem',
-                backgroundColor: 'var(--bg-soft)'
-              }}>
-                <motion.img 
-                  src={member.image} 
-                  alt={member.name} 
-                  variants={imageHoverVariants}
+          {/* Carousel Track */}
+          <div 
+            onTransitionEnd={handleTransitionEnd}
+            style={{
+              display: 'flex',
+              transition: isTransitioning ? 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)' : 'none',
+              transform: `translate3d(-${currentIndex * (100 / visibleCount)}%, 0, 0)`,
+              width: '100%'
+            }}
+          >
+            {extendedMembers.map((member, index) => (
+              <div 
+                key={`${member.name}-${index}`}
+                style={{ 
+                  flex: `0 0 ${100 / visibleCount}%`, 
+                  padding: '0 1.25rem',
+                  display: 'flex'
+                }}
+              >
+                <motion.div
+                  variants={cardHoverVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="cardHovered"
+                  viewport={{ once: true, margin: "-50px" }}
+                  className="team-card"
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover'
-                  }}
-                />
-                
-                {/* Badge Overlay */}
-                <motion.div 
-                  variants={badgeHoverVariants}
-                  style={{
-                    position: 'absolute',
-                    bottom: '12px',
-                    left: '12px',
-                    backdropFilter: 'blur(8px)',
-                    color: '#ffffff',
-                    padding: '6px 14px',
-                    borderRadius: '50px',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
+                    background: '#ffffff',
+                    border: '1.5px solid var(--border)',
+                    borderRadius: '32px',
+                    padding: '1.5rem',
                     display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                    flexDirection: 'column',
+                    cursor: 'default',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    width: '100%'
                   }}
                 >
-                  <motion.div variants={checkHoverVariants} style={{ display: 'flex', alignItems: 'center' }}>
-                    <CheckCircle2 size={12} />
-                  </motion.div>
-                  <span>{member.expertise}</span>
+                  {/* Image Frame */}
+                  <div style={{
+                    position: 'relative',
+                    width: '100%',
+                    height: '320px',
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    marginBottom: '1.5rem',
+                    backgroundColor: 'var(--bg-soft)'
+                  }}>
+                    <motion.img 
+                      src={member.image} 
+                      alt={member.name} 
+                      variants={imageHoverVariants}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover'
+                      }}
+                    />
+                    
+                    {/* Badge Overlay */}
+                    <motion.div 
+                      variants={badgeHoverVariants}
+                      style={{
+                        position: 'absolute',
+                        bottom: '12px',
+                        left: '12px',
+                        backdropFilter: 'blur(8px)',
+                        color: '#ffffff',
+                        padding: '6px 14px',
+                        borderRadius: '50px',
+                        fontSize: '0.75rem',
+                        fontWeight: 700,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                      }}
+                    >
+                      <motion.div variants={checkHoverVariants} style={{ display: 'flex', alignItems: 'center' }}>
+                        <CheckCircle2 size={12} />
+                      </motion.div>
+                      <span>{member.expertise}</span>
+                    </motion.div>
+                  </div>
+
+                  {/* Text Info */}
+                  <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
+                      <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--foreground)' }}>
+                        {member.name}
+                      </h3>
+                      
+                      {/* LinkedIn Icon Link */}
+                      <motion.a 
+                        href="#contact" 
+                        data-cursor="call"
+                        variants={linkedinHoverVariants}
+                        whileHover={{ 
+                          color: '#ffffff', 
+                          backgroundColor: 'var(--primary)',
+                          scale: 1.08
+                        }}
+                        style={{ 
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          width: '34px',
+                          height: '34px',
+                          borderRadius: '50%'
+                        }}
+                      >
+                        <LinkedinIcon size={16} />
+                      </motion.a>
+                    </div>
+
+                    {/* Subtitle Role */}
+                    <p style={{ 
+                      color: 'var(--primary)', 
+                      fontWeight: 800, 
+                      fontSize: '0.85rem', 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '0.5px',
+                      marginBottom: '1rem' 
+                    }}>
+                      {member.role}
+                    </p>
+
+                    {/* Bio text */}
+                    <p style={{ 
+                      fontSize: '0.95rem', 
+                      color: 'var(--text-muted)', 
+                      lineHeight: 1.6,
+                      margin: 0
+                    }}>
+                      {member.bio}
+                    </p>
+                  </div>
+
+                  {/* Accent Bottom Line */}
+                  <motion.div 
+                    variants={accentHoverVariants}
+                    style={{ 
+                      position: 'absolute', 
+                      bottom: 0, 
+                      left: 0, 
+                      height: '4px', 
+                      background: 'var(--gradient-red)'
+                    }} 
+                  />
                 </motion.div>
               </div>
+            ))}
+          </div>
+        </div>
 
-              {/* Text Info */}
-              <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--foreground)' }}>
-                    {member.name}
-                  </h3>
-                  
-                  {/* LinkedIn Icon Link */}
-                  <motion.a 
-                    href="#contact" 
-                    data-cursor="call"
-                    variants={linkedinHoverVariants}
-                    whileHover={{ 
-                      color: '#ffffff', 
-                      backgroundColor: 'var(--primary)',
-                      scale: 1.08
-                    }}
-                    style={{ 
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      width: '34px',
-                      height: '34px',
-                      borderRadius: '50%'
-                    }}
-                  >
-                    <LinkedinIcon size={16} />
-                  </motion.a>
-                </div>
+        {/* Carousel Controls (Arrows and Pagination Dots) */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '2rem', marginTop: '2.5rem' }}>
+          <button 
+            onClick={handlePrev}
+            style={{
+              background: 'var(--bg-soft)',
+              border: '1.5px solid var(--border)',
+              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              color: 'var(--foreground)'
+            }}
+            className="carousel-btn"
+          >
+            <ChevronLeft size={20} />
+          </button>
 
-                {/* Subtitle Role */}
-                <p style={{ 
-                  color: 'var(--primary)', 
-                  fontWeight: 800, 
-                  fontSize: '0.85rem', 
-                  textTransform: 'uppercase', 
-                  letterSpacing: '0.5px',
-                  marginBottom: '1rem' 
-                }}>
-                  {member.role}
-                </p>
+          {/* Dots */}
+          <div style={{ display: 'flex', gap: '8px' }}>
+            {teamMembers.map((_, idx) => {
+              const activeDot = currentIndex % originalLength;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => {
+                    if (slideCooldown) return;
+                    setCurrentIndex(idx);
+                  }}
+                  style={{
+                    width: activeDot === idx ? '24px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: activeDot === idx ? 'var(--primary)' : 'var(--border)',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                />
+              );
+            })}
+          </div>
 
-                {/* Bio text */}
-                <p style={{ 
-                  fontSize: '0.95rem', 
-                  color: 'var(--text-muted)', 
-                  lineHeight: 1.6,
-                  margin: 0
-                }}>
-                  {member.bio}
-                </p>
-              </div>
+          <button 
+            onClick={handleNext}
+            style={{
+              background: 'var(--bg-soft)',
+              border: '1.5px solid var(--border)',
+              borderRadius: '50%',
+              width: '48px',
+              height: '48px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              color: 'var(--foreground)'
+            }}
+            className="carousel-btn"
+          >
+            <ChevronRight size={20} />
+          </button>
+        </div>
 
-              {/* Accent Bottom Line */}
-              <motion.div 
-                variants={accentHoverVariants}
-                style={{ 
-                  position: 'absolute', 
-                  bottom: 0, 
-                  left: 0, 
-                  height: '4px', 
-                  background: 'var(--gradient-red)'
-                }} 
-              />
-            </motion.div>
-          ))}
-        </motion.div>
+        <style jsx>{`
+          .carousel-btn:hover {
+            background: var(--primary) !important;
+            border-color: var(--primary) !important;
+            color: #ffffff !important;
+            transform: scale(1.05);
+          }
+        `}</style>
 
         {/* Call to Action Footer inside Team section */}
         <div style={{ 
