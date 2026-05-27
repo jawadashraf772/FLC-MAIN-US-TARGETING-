@@ -22,7 +22,7 @@ const Footer = () => {
           <div>
             <h4 style={{ fontSize: '1rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '2rem' }}>Quick Links</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
-              {['How It Works', 'Team', 'Industries', 'Packages', 'Proof'].map(link => (
+              {['How It Works', 'Industries', 'Packages', 'Proof'].map(link => (
                 <Link key={link} href={`#${link.toLowerCase().replace(/ /g, '-')}`} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '0.9rem', fontWeight: 600 }}>
                   {link}
                 </Link>
