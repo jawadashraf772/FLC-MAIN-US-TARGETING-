@@ -68,21 +68,33 @@ const ValueProps = () => {
                 display: 'flex',
                 justifyContent: prop.align === 'right' ? 'flex-end' : 'flex-start'
               }}>
-                <div style={{ 
-                  width: '100%',
-                  maxWidth: '450px',
-                  aspectRatio: '1',
-                  background: 'var(--bg-soft)',
-                  borderRadius: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: 'var(--primary)',
-                  position: 'relative',
-                  border: '1px solid var(--border)',
-                  boxShadow: 'var(--shadow-premium)'
-                }}>
-                  <div style={{ transform: 'scale(1.5)' }}>{prop.icon}</div>
+                <motion.div
+                  whileHover={{ 
+                    y: -12, 
+                    scale: 1.03, 
+                    backgroundColor: 'var(--primary)',
+                    borderColor: 'var(--primary)',
+                    color: '#ffffff',
+                    boxShadow: 'var(--shadow-red)'
+                  }}
+                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  style={{ 
+                    width: '100%',
+                    maxWidth: '450px',
+                    aspectRatio: '1',
+                    background: 'var(--bg-soft)',
+                    borderRadius: '40px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--primary)',
+                    position: 'relative',
+                    border: '1px solid var(--border)',
+                    boxShadow: 'var(--shadow-premium)',
+                    transition: 'border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease'
+                  }}
+                >
+                  <div style={{ transform: 'scale(1.5)', transition: 'transform 0.3s ease' }}>{prop.icon}</div>
                   {/* Decorative Elements */}
                   <div style={{ 
                     position: 'absolute', 
@@ -93,7 +105,7 @@ const ValueProps = () => {
                     filter: 'blur(60px)',
                     zIndex: -1
                   }}></div>
-                </div>
+                </motion.div>
               </div>
 
               {/* Content Side */}

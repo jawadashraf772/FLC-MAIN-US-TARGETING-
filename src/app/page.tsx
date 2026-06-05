@@ -8,7 +8,7 @@ import OpsHub from '@/components/OpsHub';
 import ValueProps from '@/components/ValueProps';
 import Partnership from '@/components/Partnership';
 import Department from '@/components/Department';
-// import Team from '@/components/Team';
+import Team from '@/components/Team';
 import Proof from '@/components/Proof';
 import Packages from '@/components/Packages';
 import PricingComparison from '@/components/PricingComparison';
@@ -30,7 +30,7 @@ export default function Home() {
       <ValueProps />
       <Partnership />
       <Department />
-      {/* <Team /> */}
+      <Team />
       <Proof />
       <Packages />
       <PricingComparison />
