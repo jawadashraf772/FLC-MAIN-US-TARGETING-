@@ -581,13 +581,12 @@ const LeadershipCard: React.FC<LeadershipCardProps> = ({ leader, onClick }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
-      layout
       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
       whileHover={{ y: -6, boxShadow: '0 25px 50px -12px rgba(15, 23, 42, 0.15)' }}
       style={{
         background: '#ffffff',
         border: '1.5px solid var(--border)',
-        borderRadius: '24px',
+        borderRadius: '20px',
         padding: '1.5rem',
         display: 'flex',
         flexDirection: 'column',
@@ -744,7 +743,7 @@ const DepartmentCard: React.FC<DepartmentCardProps> = ({ dept }) => {
       style={{
         background: '#ffffff',
         border: '1.5px solid var(--border)',
-        borderRadius: '32px',
+        borderRadius: '24px',
         padding: '2.5rem',
         display: 'flex',
         flexDirection: 'column',
