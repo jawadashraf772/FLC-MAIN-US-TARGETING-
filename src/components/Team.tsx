@@ -507,12 +507,22 @@ const Team = () => {
                 {/* Quote Card */}
                 <div style={{
                   background: 'var(--bg-soft)',
-                  borderLeft: '4px solid var(--primary)',
                   borderRadius: '16px',
                   padding: '1.5rem 2rem',
                   width: '100%',
-                  textAlign: 'left'
+                  textAlign: 'left',
+                  display: 'flex',
+                  gap: '16px',
+                  alignItems: 'stretch'
                 }}>
+                  {/* Vertical Accent Bar (Perfect Rounded Caps) */}
+                  <div style={{ 
+                    width: '4px', 
+                    background: 'var(--primary)', 
+                    borderRadius: '10px',
+                    flexShrink: 0
+                  }} />
+                  
                   <p style={{ 
                     fontStyle: 'italic', 
                     fontSize: '1rem', 
@@ -679,12 +689,22 @@ const LeadershipCard: React.FC<LeadershipCardProps> = ({ leader, onClick }) => {
               {/* Quote */}
               <div style={{ 
                 background: 'var(--bg-soft)',
-                borderLeft: '3px solid var(--primary)',
                 borderRadius: '12px',
                 padding: '0.75rem 1rem',
                 marginTop: '8px',
-                width: '100%'
+                width: '100%',
+                display: 'flex',
+                gap: '12px',
+                alignItems: 'stretch'
               }}>
+                {/* Vertical Accent Bar (Perfect Rounded Caps) */}
+                <div style={{ 
+                  width: '3px', 
+                  background: 'var(--primary)', 
+                  borderRadius: '10px',
+                  flexShrink: 0
+                }} />
+                
                 <p style={{ 
                   fontSize: '0.85rem', 
                   color: 'var(--foreground)', 
