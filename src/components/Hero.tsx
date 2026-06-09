@@ -156,13 +156,16 @@ const Hero = () => {
                 marginBottom: '2rem',
                 lineHeight: 1.2,
                 letterSpacing: '-0.04em',
-                display: 'block'
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start'
               }}
             >
-              <span style={{ display: 'block' }}>Let’s discuss our</span>
-              <span style={{ color: 'var(--primary)', display: 'block' }}>proven 90 days</span>
-              <span style={{ display: 'block' }}>marketing system</span>
+              <span>Let’s discuss our</span>
+              <span style={{ color: 'var(--primary)' }}>proven 90 days</span>
+              <span>marketing system</span>
             </motion.h1>
+
 
 
 
