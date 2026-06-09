@@ -159,10 +159,11 @@ const Hero = () => {
                 display: 'block'
               }}
             >
-              Let’s Discuss our <br />
-              <span style={{ color: 'var(--primary)', display: 'inline' }}>Proven 90 Days</span> <br />
-              Marketing System
+              <span style={{ display: 'block' }}>Let’s discuss our</span>
+              <span style={{ color: 'var(--primary)', display: 'block' }}>proven 90 days</span>
+              <span style={{ display: 'block' }}>marketing system</span>
             </motion.h1>
+
 
 
 
