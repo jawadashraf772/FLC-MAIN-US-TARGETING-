@@ -156,6 +156,7 @@ function ThankYouContent() {
 export default function ThankYouPage() {
   return (
     <main style={{ background: '#ffffff' }}>
+      <Navbar />
       <Suspense fallback={
         <div style={{ minHeight: '85vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="animate-pulse" style={{ color: 'var(--text-muted)', fontWeight: 600 }}>Loading confirmation details...</div>

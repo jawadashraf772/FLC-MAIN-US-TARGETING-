@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import { motion, Variants } from 'framer-motion';
 import { Calendar, CheckCircle2, Send } from 'lucide-react';
 
@@ -16,6 +17,7 @@ const inputStyle = {
 };
 
 const Hero = () => {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     fullName: '',
     businessName: '',
@@ -44,7 +46,7 @@ const Hero = () => {
 
         // Trigger Meta Conversions API (server-side Lead tracking)
         try {
-          fetch('/api/meta-conversions', {
+          await fetch('/api/meta-conversions', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -60,6 +62,14 @@ const Hero = () => {
         } catch (fbError) {
           console.error('Failed to trigger Conversions API:', fbError);
         }
+
+        // Redirect to thank you page with query params
+        const params = new URLSearchParams({
+          name: formData.fullName,
+          email: formData.email,
+          whatsapp: formData.whatsapp,
+        });
+        router.push(`/thank-you?${params.toString()}`);
       } else {
         setStatus('error');
       }
