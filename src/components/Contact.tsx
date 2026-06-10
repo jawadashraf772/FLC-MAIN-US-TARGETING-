@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const inputStyle = {
   padding: '1rem 1.5rem',
@@ -105,6 +106,7 @@ const CustomSelect = ({ options, placeholder, onChange }: { options: string[], p
 };
 
 const Contact = () => {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     fullName: '',
     businessName: '',
@@ -149,12 +151,15 @@ const Contact = () => {
               phone: formData.whatsapp,
               fullName: formData.fullName,
               eventName: 'Lead',
-              eventSourceUrl: window.location.href,
+              eventSourceUrl: 'https://faseehlall.com/thank-you',
             }),
           });
         } catch (fbError) {
           console.error('Failed to trigger Conversions API:', fbError);
         }
+
+        // Redirect to the new thank you page with parameters
+        router.push(`/thank-you?name=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&whatsapp=${encodeURIComponent(formData.whatsapp)}`);
       } else {
         setStatus('error');
       }
