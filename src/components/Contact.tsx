@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Send, Phone, MapPin, ChevronDown } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const inputStyle = {
   padding: '1rem 1.5rem',
@@ -105,6 +106,7 @@ const CustomSelect = ({ options, placeholder, onChange }: { options: string[], p
 };
 
 const Contact = () => {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     fullName: '',
     businessName: '',
@@ -136,6 +138,8 @@ const Contact = () => {
           (window as any).clarity("event", "form_submit");
           (window as any).clarity("set", "FormSubmitted", "true");
         }
+
+        router.push('/thank-you');
       } else {
         setStatus('error');
       }

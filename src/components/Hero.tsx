@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { Calendar, CheckCircle2, Send } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const inputStyle = {
   padding: '1rem 1.5rem',
@@ -16,6 +17,7 @@ const inputStyle = {
 };
 
 const Hero = () => {
+  const router = useRouter();
   const [formData, setFormData] = React.useState({
     fullName: '',
     businessName: '',
@@ -41,6 +43,7 @@ const Hero = () => {
 
       if (response.ok) {
         setStatus('success');
+        router.push('/thank-you');
       } else {
         setStatus('error');
       }
