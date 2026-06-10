@@ -43,7 +43,28 @@ const Hero = () => {
 
       if (response.ok) {
         setStatus('success');
-        router.push('/thank-you');
+
+        // Trigger Meta Conversions API (server-side Lead tracking)
+        try {
+          fetch('/api/meta-conversions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: formData.email,
+              phone: formData.whatsapp,
+              fullName: formData.fullName,
+              eventName: 'Lead',
+              eventSourceUrl: window.location.href,
+            }),
+          });
+        } catch (fbError) {
+          console.error('Failed to trigger Conversions API:', fbError);
+        }
+
+        // Redirect to the new thank you page with parameters
+        router.push(`/thank-you?name=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&whatsapp=${encodeURIComponent(formData.whatsapp)}`);
       } else {
         setStatus('error');
       }
@@ -134,6 +155,7 @@ const Hero = () => {
             {/* Headline */}
             <motion.h1 
               variants={itemVariants}
+              className="desktop-only"
               style={{ 
                 fontSize: 'clamp(2.2rem, 4.5vw, 3.5rem)', 
                 fontWeight: 900, 
@@ -147,6 +169,30 @@ const Hero = () => {
               If They Come Back, You Built <span style={{ color: 'var(--primary)' }}>Trust.</span> <br />
               If They Tell Others, You Built a <span style={{ color: 'var(--primary)' }}>Brand.</span>
             </motion.h1>
+
+            <motion.h1 
+              variants={itemVariants}
+              className="mobile-only"
+              style={{ 
+                fontSize: 'clamp(2.0rem, 6vw, 2.8rem)', 
+                fontWeight: 900, 
+                color: 'var(--foreground)', 
+                marginBottom: '2rem',
+                lineHeight: 1.2,
+                letterSpacing: '-0.04em',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'flex-start'
+              }}
+            >
+              <span>Let’s discuss our</span>
+              <span style={{ color: 'var(--primary)' }}>proven 90 days</span>
+              <span>marketing system</span>
+            </motion.h1>
+
+
+
+
 
             <motion.p 
               variants={itemVariants}

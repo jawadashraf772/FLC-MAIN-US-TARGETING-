@@ -139,7 +139,27 @@ const Contact = () => {
           (window as any).clarity("set", "FormSubmitted", "true");
         }
 
-        router.push('/thank-you');
+        // Trigger Meta Conversions API (server-side Lead tracking)
+        try {
+          fetch('/api/meta-conversions', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email: formData.email,
+              phone: formData.whatsapp,
+              fullName: formData.fullName,
+              eventName: 'Lead',
+              eventSourceUrl: 'https://faseehlall.com/thank-you',
+            }),
+          });
+        } catch (fbError) {
+          console.error('Failed to trigger Conversions API:', fbError);
+        }
+
+        // Redirect to the new thank you page with parameters
+        router.push(`/thank-you?name=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&whatsapp=${encodeURIComponent(formData.whatsapp)}`);
       } else {
         setStatus('error');
       }
