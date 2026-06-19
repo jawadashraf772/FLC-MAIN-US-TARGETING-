@@ -179,20 +179,17 @@ const Hero = () => {
               variants={itemVariants}
               className="mobile-only"
               style={{ 
-                fontSize: 'clamp(2.0rem, 6vw, 2.8rem)', 
+                fontSize: 'clamp(1.8rem, 6vw, 2.5rem)', 
                 fontWeight: 900, 
                 color: 'var(--foreground)', 
                 marginBottom: '2rem',
                 lineHeight: 1.2,
-                letterSpacing: '-0.04em',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'flex-start'
+                letterSpacing: '-0.04em'
               }}
             >
-              <span>Let’s discuss our</span>
-              <span style={{ color: 'var(--primary)' }}>proven 90 days</span>
-              <span>marketing system</span>
+              If Your Customer Buys Once, You Made a <span style={{ color: 'var(--primary)' }}>Sale.</span> <br />
+              If They Come Back, You Built <span style={{ color: 'var(--primary)' }}>Trust.</span> <br />
+              If They Tell Others, You Built a <span style={{ color: 'var(--primary)' }}>Brand.</span>
             </motion.h1>
 
 
