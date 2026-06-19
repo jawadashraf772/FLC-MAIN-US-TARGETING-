@@ -260,7 +260,7 @@ const Contact = () => {
           </div>
 
           {/* Form */}
-          <div style={{ background: 'var(--bg-soft)', padding: '3.5rem', borderRadius: '40px', border: '1px solid var(--border)', boxShadow: 'var(--shadow-premium)' }}>
+          <div className="contact-form-card" style={{ background: 'var(--bg-soft)', padding: '3.5rem', borderRadius: '40px', border: '1px solid var(--border)', boxShadow: 'var(--shadow-premium)' }}>
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
               <div className="grid-2" style={{ gap: '1.5rem' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -367,6 +367,14 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .contact-form-card {
+            padding: 1.5rem !important;
+            border-radius: 24px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
