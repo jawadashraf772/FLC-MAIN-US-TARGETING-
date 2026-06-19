@@ -164,6 +164,19 @@ const Department = () => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .role-mobile-list {
+          display: none !important;
+        }
+        @media (max-width: 768px) {
+          .role-desktop-table {
+            display: none !important;
+          }
+          .role-mobile-list {
+            display: flex !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
