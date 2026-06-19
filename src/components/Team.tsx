@@ -300,7 +300,7 @@ const Team = () => {
         </motion.div>
 
         {/* Mobile Stacking Layout (Alternative) */}
-        <div className="mobile-only" style={{ display: 'none', flexDirection: 'column', alignItems: 'center', gap: '15px' }}>
+        <div className="mobile-only team-mobile-flex" style={{ display: 'none', flexDirection: 'column', alignItems: 'center', gap: '15px' }}>
           <LeadershipCard leader={leaders[0]} onClick={() => setSelectedLeader(leaders[0])} />
           <div className="dotted-vert" />
           <LeadershipCard leader={leaders[1]} onClick={() => setSelectedLeader(leaders[1])} />
@@ -557,7 +557,7 @@ const Team = () => {
           .hidden-mobile {
             display: none !important;
           }
-          .mobile-only {
+          .team-mobile-flex {
             display: flex !important;
           }
         }
