@@ -36,7 +36,7 @@ const Team = () => {
       role: 'Chief Executive Officer',
       avatar: '/faseeh lall.jpeg',
       initials: 'FL',
-      bio: 'A self-made entrepreneur from Faisalabad, Pakistan, with a background in business studies. Faseeh has successfully launched and scaled multiple ventures across technology, real estate, and retail, dedicated to solving market gaps and creating local economic opportunities.',
+      bio: 'A visionary entrepreneur with a deep background in business growth and client acquisition systems. Faseeh has successfully launched and scaled multiple ventures, dedicated to solving market gaps and creating high-growth B2B acquisition funnels globally.',
       quote: 'Sustainable and innovative businesses are the keys to lasting change and empowering future leaders.',
       color: 'linear-gradient(135deg, #e11d48 0%, #be123c 100%)'
     },

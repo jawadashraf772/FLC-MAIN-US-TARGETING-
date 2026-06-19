@@ -85,12 +85,12 @@ const Department = () => {
               
               <div style={{ marginBottom: '2.5rem' }}>
                 <p style={{ opacity: 0.8, fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: 700 }}>Hiring In-House Team</p>
-                <div style={{ fontSize: '2rem', fontWeight: 900, textDecoration: 'line-through', opacity: 0.5 }}>PKR 8 Lacs+ /mo</div>
+                <div style={{ fontSize: '2rem', fontWeight: 900, textDecoration: 'line-through', opacity: 0.5 }}>$15,000+ /mo</div>
               </div>
 
               <div style={{ marginBottom: '2.5rem', padding: '2rem', background: '#ffffff', borderRadius: '24px', border: 'none' }}>
                 <p style={{ color: 'var(--primary)', fontWeight: 900, fontSize: '0.9rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>FLC Full Team All-In</p>
-                <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--foreground)' }}>Starts PKR 2 Lacs</div>
+                <div style={{ fontSize: '2.5rem', fontWeight: 900, color: 'var(--foreground)' }}>Starts $720 /mo</div>
                 <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem', fontWeight: 600 }}>Zero recruitment. Zero overhead. Total ownership.</p>
               </div>
             </div>
@@ -98,7 +98,7 @@ const Department = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <TrendingUp size={20} style={{ color: '#ffffff' }} />
-                <span style={{ fontWeight: 800 }}>Save PKR 6 Lacs per month</span>
+                <span style={{ fontWeight: 800 }}>Save $14,000+ per month</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                 <Users size={20} style={{ color: '#ffffff' }} />

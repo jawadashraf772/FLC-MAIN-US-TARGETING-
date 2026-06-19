@@ -32,7 +32,7 @@ const ValueProps = () => {
     },
     {
       badge: 'Our Secret Weapon, CAPI',
-      headline: '4 or 5 Agencies in Pakistan Use This. We Are One of Them.',
+      headline: 'Only a Handful of Elite B2B Agencies Globally Use This. We Are One of Them.',
       points: [
         'Our Conversion API (CAPI) runs on dedicated AWS servers.',
         'Achieve 90 to 95% tracking accuracy vs standard 35 to 40%.',
@@ -45,8 +45,17 @@ const ValueProps = () => {
   ];
 
   return (
-    <section className="section-padding" style={{ background: '#ffffff' }}>
+    <section id="services" className="section-padding" style={{ background: '#ffffff' }}>
       <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+          <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', marginBottom: '1.5rem', fontWeight: 900 }}>
+            We Build <span style={{ color: 'var(--primary)' }}>High-Converting</span> Landing Pages That Actually Work
+          </h2>
+          <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontWeight: 500 }}>
+            We don't just design; we strategize. Our landing pages are engineered for one goal: results.
+          </p>
+        </div>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: '120px' }}>
           {props.map((prop, i) => (
             <motion.div
