@@ -31,17 +31,15 @@ const Department = () => {
           </p>
         </div>
 
-        {/* Table - Full Width */}
-        <div style={{ 
+        {/* Table - Full Width (Desktop Only) */}
+        <div className="role-desktop-table" style={{ 
           background: 'var(--bg-soft)', 
           borderRadius: '40px', 
-          padding: '1rem', 
+          padding: '1.5rem', 
           border: '1px solid var(--border)',
-          overflowX: 'auto',
-          WebkitOverflowScrolling: 'touch',
           marginBottom: '3rem'
         }}>
-          <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 10px', minWidth: '400px' }}>
+          <table style={{ width: '100%', borderCollapse: 'separate', borderSpacing: '0 10px' }}>
             <thead>
               <tr>
                 <th style={{ textAlign: 'left', padding: '1.5rem 2rem', fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '2px', opacity: 0.5 }}>Role</th>
@@ -61,6 +59,16 @@ const Department = () => {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Roles List (Mobile Only) */}
+        <div className="role-mobile-list" style={{ marginBottom: '3rem', flexDirection: 'column', gap: '1rem' }}>
+          {roles.map((item) => (
+            <div key={item.role} style={{ background: 'var(--bg-soft)', borderRadius: '24px', padding: '1.5rem', border: '1px solid var(--border)' }}>
+              <div style={{ fontWeight: 800, fontSize: '1.1rem', color: 'var(--foreground)', marginBottom: '0.5rem' }}>{item.role}</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem', fontWeight: 600 }}>{item.job}</div>
+            </div>
+          ))}
         </div>
 
         {/* Comparison Cards - Grid-2 below */}

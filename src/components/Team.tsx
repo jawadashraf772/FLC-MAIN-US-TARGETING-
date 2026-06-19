@@ -122,7 +122,7 @@ const Team = () => {
       leader: 'Atif',
       accentColor: '#3b82f6',
       members: [
-        { name: 'Position Reserved / TBA', isPlaceholder: true }
+        { name: 'Farhan Ahmed' }
       ]
     },
     {
@@ -132,18 +132,17 @@ const Team = () => {
       leaderImage: '/Neelum saleem (2).jpeg',
       accentColor: '#3b82f6',
       members: [
-        { name: 'Position Reserved / TBA', isPlaceholder: true }
+        { name: 'Sarah Malik' }
       ]
     },
     {
       department: 'Video Editing Department',
       role: 'Sr. Video Editor',
-      leader: 'Position Vacant',
+      leader: 'Zohaib Atif',
+      leaderImage: '/Zohaib atif.jpeg',
       accentColor: '#8b5cf6',
       members: [
-        { name: 'Zohaib Atif (Jr. Editor)', image: '/Zohaib atif.jpeg' },
-        { name: 'Muhaimin (Motion Graphic)' },
-        { name: 'Team Member Name TBA', isPlaceholder: true }
+        { name: 'Muhaimin (Motion Graphic)' }
       ]
     },
     {
@@ -152,7 +151,7 @@ const Team = () => {
       leader: 'Maaz',
       accentColor: '#8b5cf6',
       members: [
-        { name: 'Team Member Name TBA', isPlaceholder: true }
+        { name: 'Hamza Niaz' }
       ]
     },
     {
@@ -161,7 +160,7 @@ const Team = () => {
       leader: 'Nafay',
       accentColor: '#ec4899',
       members: [
-        { name: 'Future Team Members TBA', isPlaceholder: true }
+        { name: 'Bilal Chaudhry' }
       ]
     },
     {
@@ -170,7 +169,7 @@ const Team = () => {
       leader: 'Usman',
       accentColor: '#ec4899',
       members: [
-        { name: 'Future Team Members TBA', isPlaceholder: true }
+        { name: 'Ayesha Khan' }
       ]
     }
   ];
