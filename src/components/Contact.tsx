@@ -314,11 +314,11 @@ const Contact = () => {
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', opacity: 0.7 }}>WhatsApp Number <span style={{ color: 'var(--primary)' }}>*</span></label>
+                <label style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', opacity: 0.7 }}>Phone / WhatsApp Number <span style={{ color: 'var(--primary)' }}>*</span></label>
                 <input 
                   name="whatsapp"
                   type="tel" 
-                  placeholder="03XX-XXXXXXX" 
+                  placeholder="+1 (555) 000-0000" 
                   style={inputStyle} 
                   required
                   value={formData.whatsapp}
