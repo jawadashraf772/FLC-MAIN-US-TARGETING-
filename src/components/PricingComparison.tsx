@@ -22,7 +22,7 @@ const PricingComparison = () => {
   return (
     <section className="section-padding" style={{ background: 'var(--bg-soft)', paddingTop: 0 }}>
       <div className="container">
-        <div style={{ 
+        <div className="comparison-card" style={{ 
           background: '#ffffff', 
           borderRadius: '40px', 
           padding: '4rem', 
@@ -30,18 +30,18 @@ const PricingComparison = () => {
           boxShadow: 'var(--shadow-premium)',
           overflowX: 'auto'
         }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div className="comparison-header" style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Feature Comparison</h3>
             <p style={{ color: 'var(--text-muted)' }}>Choose the level of scale that fits your current business needs.</p>
           </div>
 
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '800px' }}>
+          <table className="comparison-table" style={{ width: '100%', borderCollapse: 'collapse', minWidth: '800px' }}>
             <thead>
               <tr>
-                <th style={{ textAlign: 'left', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Service Feature</th>
-                <th style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Basic</th>
-                <th style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem', color: 'var(--primary)' }}>Intermediate</th>
-                <th style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Advanced</th>
+                <th className="comparison-th" style={{ textAlign: 'left', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Service Feature</th>
+                <th className="comparison-th" style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Basic</th>
+                <th className="comparison-th" style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem', color: 'var(--primary)' }}>Intermediate</th>
+                <th className="comparison-th" style={{ textAlign: 'center', padding: '1.5rem', borderBottom: '2px solid var(--bg-soft)', fontSize: '1.1rem' }}>Advanced</th>
               </tr>
             </thead>
             <tbody>
@@ -54,24 +54,24 @@ const PricingComparison = () => {
                   transition={{ delay: idx * 0.05 }}
                   style={{ borderBottom: '1px solid var(--bg-soft)' }}
                 >
-                  <td style={{ padding: '1.2rem 1.5rem', fontWeight: 600, color: 'var(--foreground)' }}>{feature.name}</td>
-                  <td style={{ textAlign: 'center', padding: '1.2rem 1.5rem' }}>
+                  <td className="comparison-td-name" style={{ padding: '1.2rem 1.5rem', fontWeight: 600, color: 'var(--foreground)' }}>{feature.name}</td>
+                  <td className="comparison-td" style={{ textAlign: 'center', padding: '1.2rem 1.5rem' }}>
                     {typeof feature.basic === 'boolean' ? (
-                      feature.basic ? <Check size={20} style={{ color: 'var(--primary)' }} /> : <Minus size={20} style={{ color: 'var(--border)' }} />
+                      feature.basic ? <Check size={20} style={{ color: 'var(--primary)', margin: '0 auto' }} /> : <Minus size={20} style={{ color: 'var(--border)', margin: '0 auto' }} />
                     ) : (
                       <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>{feature.basic}</span>
                     )}
                   </td>
-                  <td style={{ textAlign: 'center', padding: '1.2rem 1.5rem', background: 'rgba(225, 29, 72, 0.02)' }}>
+                  <td className="comparison-td" style={{ textAlign: 'center', padding: '1.2rem 1.5rem', background: 'rgba(225, 29, 72, 0.02)' }}>
                     {typeof feature.intermediate === 'boolean' ? (
-                      feature.intermediate ? <Check size={20} style={{ color: 'var(--primary)' }} /> : <Minus size={20} style={{ color: 'var(--border)' }} />
+                      feature.intermediate ? <Check size={20} style={{ color: 'var(--primary)', margin: '0 auto' }} /> : <Minus size={20} style={{ color: 'var(--border)', margin: '0 auto' }} />
                     ) : (
                       <span style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--primary)' }}>{feature.intermediate}</span>
                     )}
                   </td>
-                  <td style={{ textAlign: 'center', padding: '1.2rem 1.5rem' }}>
+                  <td className="comparison-td" style={{ textAlign: 'center', padding: '1.2rem 1.5rem' }}>
                     {typeof feature.advanced === 'boolean' ? (
-                      feature.advanced ? <Check size={20} style={{ color: 'var(--primary)' }} /> : <Minus size={20} style={{ color: 'var(--border)' }} />
+                      feature.advanced ? <Check size={20} style={{ color: 'var(--primary)', margin: '0 auto' }} /> : <Minus size={20} style={{ color: 'var(--border)', margin: '0 auto' }} />
                     ) : (
                       <span style={{ fontSize: '0.9rem', fontWeight: 700 }}>{feature.advanced}</span>
                     )}
@@ -81,7 +81,7 @@ const PricingComparison = () => {
             </tbody>
           </table>
 
-          <div style={{ marginTop: '4rem', textAlign: 'center' }}>
+          <div className="comparison-footer" style={{ marginTop: '4rem', textAlign: 'center' }}>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '2rem' }}>
               Need a custom high-volume plan? <span style={{ color: 'var(--primary)', fontWeight: 700 }}>Let's talk.</span>
             </p>
@@ -91,6 +91,39 @@ const PricingComparison = () => {
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .comparison-card {
+            padding: 1.5rem 1rem !important;
+            border-radius: 24px !important;
+          }
+          .comparison-header {
+            margin-bottom: 2rem !important;
+          }
+          .comparison-header h3 {
+            font-size: 1.6rem !important;
+          }
+          .comparison-table {
+            min-width: 650px !important;
+          }
+          :global(.comparison-th) {
+            padding: 1rem 0.5rem !important;
+            font-size: 0.95rem !important;
+          }
+          :global(.comparison-td-name) {
+            padding: 0.8rem 0.5rem !important;
+            font-size: 0.85rem !important;
+          }
+          :global(.comparison-td) {
+            padding: 0.8rem 0.5rem !important;
+            font-size: 0.85rem !important;
+          }
+          .comparison-footer {
+            margin-top: 2rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
