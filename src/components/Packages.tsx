@@ -8,7 +8,7 @@ const Packages = () => {
   const plans = [
     {
       name: 'Basic',
-      price: '$720 USD',
+      price: '$1,500 USD',
       period: 'per month',
       description: 'Foundational outreach system for startups and solo founders.',
       features: [
@@ -24,7 +24,7 @@ const Packages = () => {
     },
     {
       name: 'Intermediate',
-      price: '$1,000 USD',
+      price: '$2,500 USD',
       period: 'per month',
       pipeline: 'Approx. $30k - $35k',
       description: 'Our flagship system. Total automation of your sales pipeline.',
@@ -42,8 +42,8 @@ const Packages = () => {
     },
     {
       name: 'Advanced',
-      price: '$1,560 USD',
-      originalPrice: '$2,000 USD',
+      price: '$4,000 USD',
+      originalPrice: '$5,000 USD',
       period: 'per month',
       pipeline: 'Approx. $60k - $70k',
       description: 'Maximum scale for established agencies looking for market dominance.',
@@ -53,7 +53,7 @@ const Packages = () => {
         'Double Outreach & Pipeline',
         'Priority Strategist Access',
         'Advanced CAPI Integration',
-        'Save $440 USD total',
+        'Save $1,000 USD total',
         'Minimum 3 LinkedIn IDs required'
       ],
       cta: 'Talk to Expert',
