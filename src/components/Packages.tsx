@@ -124,15 +124,13 @@ const Packages = () => {
               </div>
 
               {plan.pipeline && (
-                <div style={{ 
-                  background: plan.popular ? 'rgba(255,255,255,0.1)' : 'var(--primary-soft)', 
+                <div className={`pipeline-box ${plan.popular ? 'popular' : ''}`} style={{ 
                   padding: '1.2rem', 
                   borderRadius: '20px', 
                   marginBottom: '1.5rem',
-                  border: `1px dashed ${plan.popular ? 'rgba(255,255,255,0.2)' : 'var(--primary)'}`
                 }}>
                   <div style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7, marginBottom: '4px' }}>90-Day Pipeline Value</div>
-                  <div style={{ fontSize: '1.5rem', fontWeight: 900, color: plan.popular ? '#ffffff' : 'var(--primary)' }}>{plan.pipeline}</div>
+                  <div className="pipeline-value" style={{ fontSize: '1.5rem', fontWeight: 900 }}>{plan.pipeline}</div>
                   <div style={{ fontSize: '0.7rem', opacity: 0.6, marginTop: '4px', lineHeight: 1.4 }}>Estimated based on avg. deal size of $700 - $1,000 per SQL.</div>
                 </div>
               )}

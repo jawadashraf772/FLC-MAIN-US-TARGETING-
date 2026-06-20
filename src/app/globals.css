@@ -328,6 +328,25 @@ p {
   transition: color 0.3s ease;
 }
 
+.pipeline-box {
+  background: var(--primary-soft);
+  border: 1px dashed var(--primary);
+  transition: all 0.3s ease;
+}
+
+.pipeline-box.popular {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.pipeline-value {
+  color: var(--primary);
+}
+
+.pipeline-box.popular .pipeline-value {
+  color: #ffffff;
+}
+
 .package-card {
   background: white;
   padding: 3rem;
@@ -355,9 +374,15 @@ p {
 .package-card:hover p,
 .package-card:hover span,
 .package-card:hover svg,
-.package-card:hover .check-icon {
+.package-card:hover .check-icon,
+.package-card:hover .pipeline-value {
   color: white !important;
   opacity: 1 !important;
+}
+
+.package-card:hover .pipeline-box {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
 .package-card:hover .btn-premium.secondary {
