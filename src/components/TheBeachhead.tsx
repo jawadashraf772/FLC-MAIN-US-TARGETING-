@@ -42,7 +42,7 @@ const TheBeachhead = () => {
             </p>
             
             <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', lineHeight: '1.8', marginBottom: '2.5rem' }}>
-              We do the opposite. We find your <strong>Beachhead</strong> — a hyper-specific segment of the market where your offer is 10x more valuable. We don't target the USA; we target Importers in New Jersey. We don't target Accounting; we target Audit Firms in Dubai.
+              We do the opposite. We find your <strong>Beachhead</strong> — a hyper-specific segment of the market where your offer is 10x more valuable. We don't target the USA; we target Importers in New Jersey. We don't target Accounting; we target Audit Firms in USA.
             </p>
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>

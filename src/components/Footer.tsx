@@ -33,9 +33,9 @@ const Footer = () => {
           <div>
             <h4 style={{ fontSize: '1rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '2rem' }}>Locations</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
-              <p>Delaware, USA (HQ)</p>
-              <p>London, UK (Regional)</p>
-              <p>Sydney, Australia (Regional)</p>
+              <p>Faisal Town, Lahore (HQ)</p>
+              <p>Raiwind Road, Lahore</p>
+              <p>Multan Road, Lahore</p>
             </div>
           </div>
 

@@ -12,11 +12,11 @@ const FAQ = () => {
     },
     {
       q: "The package is too expensive, how do we keep costs minimum?",
-      a: "The investment is designed to pay for itself; closing even one high-value client often covers the first month. Tight budgets can start with the Basic package (PKR 200,000) for raw leads and upgrade later."
+      a: "The investment is designed to pay for itself; closing even one high-value client often covers the first month. Tight budgets can start with the Basic package ($1,500) for raw leads and upgrade later."
     },
     {
       q: "Is the ad spend included in the package?",
-      a: "No, ad spend is separate and paid directly to platforms. It typically ranges from PKR 30,000 to PKR 100,000 per month depending on your specific market and goals."
+      a: "No, ad spend is separate and paid directly to platforms. It typically ranges from $300 to $1,000 per month depending on your specific market and goals."
     },
     {
       q: "Who owns the system and CRM after the 90-day period?",

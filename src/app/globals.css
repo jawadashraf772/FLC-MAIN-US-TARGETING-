@@ -323,6 +323,11 @@ p {
   flex-shrink: 0;
 }
 
+.check-icon {
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
 .package-card {
   background: white;
   padding: 3rem;
@@ -338,7 +343,7 @@ p {
 
 .package-card:hover {
   background: var(--primary) !important;
-  color: white;
+  color: white !important;
   border-color: var(--primary);
   transform: translateY(-10px);
   box-shadow: var(--shadow-red);
@@ -349,8 +354,10 @@ p {
 .package-card:hover .feature-item,
 .package-card:hover p,
 .package-card:hover span,
-.package-card:hover svg {
+.package-card:hover svg,
+.package-card:hover .check-icon {
   color: white !important;
+  opacity: 1 !important;
 }
 
 .package-card:hover .btn-premium.secondary {

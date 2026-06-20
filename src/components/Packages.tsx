@@ -151,7 +151,7 @@ const Packages = () => {
                 <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                   {plan.features.map((feature: string) => (
                     <li key={feature} style={{ display: 'flex', alignItems: 'start', gap: '12px', fontSize: '0.9rem', fontWeight: 600 }}>
-                      <Check size={18} style={{ color: 'var(--primary)', flexShrink: 0, marginTop: '2px' }} />
+                      <Check size={18} className="check-icon" style={{ flexShrink: 0, marginTop: '2px' }} />
                       <span style={{ opacity: plan.popular ? 0.9 : 0.8 }}>{feature}</span>
                     </li>
                   ))}
