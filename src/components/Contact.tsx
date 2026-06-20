@@ -253,7 +253,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <div style={{ fontSize: '0.8rem', fontWeight: 800, textTransform: 'uppercase', opacity: 0.5 }}>Location</div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: 800 }}>Delaware, USA (Remote Operations)</div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 800 }}>Faisal Town, Lahore (HQ)</div>
                 </div>
               </div>
             </div>
